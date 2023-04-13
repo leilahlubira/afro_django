@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ pr_title }}</title>
+        <link rel="stylesheet" href="{% static 'css/dtl.css' %}">
+        <script src=""></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li id='logo'>{{ pr_title }}</li>
+                    {% if user.is_authenticated %}
+                     <li class='navlink'>{{user.name}}</li>
+                    {% else %}
+                     <li class="navlink">Login</li>
+                     <li class="navlink"><a href="{% url 'register' %}">Register</a></li>
+                    {% endif %}
+                    <li class="navlink">About</li>
+                    <li class="navlink">Home</li>
+                </ul>
+            </nav>
+        </header>
+        
+        <h1>{{ username }} Welcome to the {{ pr_title }}.</h1>
+        {% if gender == 'Male' %} 
+         <p>Greetings Sir.</p>
+        {% else %}
+         <P>Greetings madame.</P>
+        {% endif %}
+        {% if username == 'Bruce' %}
+         <p>Hi Bruce.</p>
+        {% elif username == 'Leilah' %}
+         <p>Hi Leilah.</p>
+        {% endif %}
+        <footer></footer>
+    </body>
+</html>
