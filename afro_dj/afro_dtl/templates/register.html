@@ -26,6 +26,8 @@
                 </ul>
             </nav>
         </header>
+        <!-- form action is the url where the form posts its data -->
+        <!-- method is the type of request made by the form - post/get -->
         <form action="{% url 'registration' %}" id="reg_form" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="regdiv">
@@ -39,7 +41,7 @@
                 <input placeholder="Enter your username" name="username" type="text"
                 required>
                 <br> 
-                <input placeholder="Email" name="email" type="email" required> 
+                <input placeholder="Email" name="user_email" type="email" required> 
                 <br>
                 <input placeholder="Password" name="password" type="password" required>
                 <br>

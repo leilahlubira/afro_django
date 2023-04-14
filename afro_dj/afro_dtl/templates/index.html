@@ -1,4 +1,5 @@
-{% load static %}
+<!--loads css and images from static directory -->
+{% load static %} 
 
 <!DOCTYPE html>
     <head>
@@ -27,6 +28,7 @@
         </header>
         
         <h1>{{ username }} Welcome to the {{ pr_title }}.</h1>
+        <!-- using conditional statements(if tags) in html-->
         {% if gender == 'Male' %} 
          <p>Greetings Sir.</p>
         {% else %}
