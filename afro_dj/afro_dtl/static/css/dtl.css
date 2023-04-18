@@ -7,6 +7,10 @@ header{
 
 }
 
+body{
+    text-decoration: none;
+}
+
 .navlink{
     float: right;
     margin-right: 20px;
@@ -28,10 +32,12 @@ header a{
 #logo {
     color: yellow;
 }
+
 .regdiv{
     width: 80%;
     padding: 15px;
     margin-left: 140px;
+    text-align: center;
     
 }
 .regdiv select{
@@ -49,19 +55,12 @@ header a{
     margin-left: 25px;
     
 }
-.regdiv{
-    text-align: center;
-
-}
 
 #login_form{
     padding-top: 15px;
-    margin-top: 15%;
+    margin-top: 5%;
+    padding-bottom: 5%;
 }
-
-
-
-
 
 
 
@@ -75,4 +74,37 @@ header a{
 }
 #signupbtn{
     width: 30%;
+}
+
+#flash_message{
+    color: green;
+    background: aliceblue;
+    width: 60%;
+    text-align: center;
+    margin:1% 20%;
+    padding-top: 5px;
+
+}
+
+footer{
+    display: flex;
+    text-align: center;
+    bottom: 0px;
+    left: 0px;
+    position:relative;
+    background-color: aliceblue;
+    height: 50px;
+    width: 100%;
+    padding: 2px;
+}
+#pagecontent h1{
+    text-align: center;
+}
+#footer_txt p{
+    text-align: center;
+    
+}
+#close_btn{
+    color: white;
+    background-color: red;
 }
