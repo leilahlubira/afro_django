@@ -1,50 +1,62 @@
 {% load static %}
-
 <!DOCTYPE html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{{ pr_title }}</title>
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
         <link rel="stylesheet" href="{% static 'css/dtl.css' %}">
         <script src="{% static 'js/dtl.js' %}"></script>
-        <script src=""></script>
     </head>
     <body>
-        <header>
-            <nav>
-                <ul>
-                    <!-- double curly brackets are used to indicate/access variables from views -->
-                    <li id='logo'>{{ pr_title }}</li>
-                    <!-- curly bracket and %sign is a tag. Can be a conditional statement/ function -->
-                    {% if user.is_authenticated %}
-                      <li class="navlink"><a href="{% url 'logout_user' %}"> Logout</a></li>
-                      <li class='navlink'></li>
-                      <li class="navlink"><a href="{% url 'index' %}"> About</a></li>
-                      <li class="navlink"><a href="{% url 'index' %}"> Home</a></li>
-                    {% else %}
-                      <li class="navlink"><a href="{% url 'login_page' %}">Login</a> </li>
-                      <li class="navlink"><a href="{% url 'register' %}">Register</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </header>
-        <div id="pagecontent">
-            {% if user.is_authenticated %}
-            {% with messages='custom flash message %}
-            
-            {% if messages %}
-            <div id="flash_message">
-                <p class="messages">{{messages}}</p>
-                <button id="close_btn" onclick="hide('flash_message')">Close</button>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="container-fluid">
+                <div class="col-md-12">
+                    <nav>
+                        <ul class="nav nav-expand-lg nav-dark bg-info mr-auto">
+                        <!-- double curly brackets are used to indicate/access variables from views -->
+                        <div class="col-md-3"><li id='logo' class="nav-item">{{ pr_title }}</li></div>
+                        <div class="col-md-4"></div>
+
+                            <!-- curly bracket and %sign is a tag. Can be a conditional statement/ function -->
+                            {% if user.is_authenticated %}
+                                <li class="nav-item"><a href="{% url 'logout_user' %}" class="nav-link"> <button class="btn btn-outline-primary btn-md">Logout</button></a></li>
+                                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link"> <button class="btn btn-outline-primary btn-md"> Home</button></a></li>
+                                <li class="nav-item" ><a href="{% url 'userforminfo' %}" class="nav-link"><button class="btn btn-outline-primary btn-md">Users</button> </a></li>
+                                <li class="nav-item" ><a href="{% url 'user_form' %}" class="nav-link"><button class="btn btn-outline-primary btn-md">Contact Us</button></a></li>
+                      
+                            {% else %}
+                                <li class="nav-item"><a href="{% url 'login_page' %}" class="nav-link"> <button class="btn btn-outline-primary btn-md">Login</button></a> </li>
+                                <li class="nav-item"><a href="{% url 'register' %}" class="nav-link"> <button class="btn btn-outline-primary btn-md">Register</button></a></li>
+                                <li class="nav-item" ><a href="{% url 'userforminfo' %}" class="nav-link"><button class="btn btn-outline-primary btn-md">Users</button> </a></li>
+                                <li class="nav-item" ><a href="{% url 'user_form' %}" class="nav-link"><button class="btn btn-outline-primary btn-md">Form</button></a></li>
+                            {% endif %}
+                        </div>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-            
+        
+        <div id="pagecontent" class="container-fluid">
+            {% if messages %}
+            <div id="flash_message" class="container-fluid">
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                        <p class="messages">{{message}}</p>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+                <button class="btn btn-outline-danger" onclick="hide('flash_message')">Close</button>
+            </div>
             {% endif %}
-            {% endwith %}
+
 
             <h1>Mr/Mrs.{{ username }} logged into {{pr_title}} successfully.</h1>
-
-            {% endif %}
 
         {% block content %}
         <!-- during inheritence this will be the only thing that changes on all the other pages.
@@ -52,8 +64,18 @@
         {% endblock %}
         </div>
     </body>
-    <footer>
-        <p id="footer_txt">&copy;<b>Designed by Leilah.</b></p>
-    </footer>
+    <div class="container-fluid">
+        <footerclass="page-footer font-small blue" >
+            <div class="col-md-12 col-sm-12">
+                <div class="col-md-4"><b>Partners</b></div>
+                <div class="col-md-4">
+                    <p id="footer_txt">&copy;<b>Designed by Leilah.</b></p>
+                </div>
+                <div class="col-md-4"><b>Social media</b></div>
+            </div>
+       </footer>
+    </div>
+</html>
     
 </html>
+ 

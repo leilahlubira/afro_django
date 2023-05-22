@@ -4,7 +4,17 @@
 
     {% if user.is_authenticated %}
     <h1>Welcome to the {{ pr_title }} dashboard.</h1>
-
+    <br><br>
+    <form action="{% url 'capture_message' %}" method="POST" enctype="multipart/form-data" class="form-control">
+        {% csrf_token %}
+        <input type="text" class="col-md-6 form-control" placeholder="messenger's name" name="messenger" id="">
+        <br>
+        <textarea class="col-md-10" name="message" id="" cols="30" rows="10"></textarea>
+        <br>
+        <button type="submit" class="btn btn-outline-primary">Capture message</button>
+        <br>
+    </form>
+    
     {% else %}
     <h1>Hello and welcome to the {{ pr_title }} landing page.</h1>
     {% endif %}

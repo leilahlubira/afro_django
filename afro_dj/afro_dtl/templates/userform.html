@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+{% if user.is_authenticated %}
+<br><br>
+    <div class="container" id="form_div">
+        <form action="{% url 'user_form' %}" method="POST">
+            <h5>Contact Us.</h5>
+            <h4><b>Fill the form below.</b></h4>
+            {% csrf_token %}
+            <div class="mb-3">
+            <input type="name" class="form-control"  placeholder="Name" name='name'>
+            </div>
+            <div class="mb-3">
+            <input type="email" class="form-control"  placeholder="Email" name='email'>
+            </div>
+            <div class="mb-3">
+            <input type="text" class="form-control"  placeholder="Occupation" name='occupation'>
+            </div>
+            <div class="mb-2" >
+            <p><b> Please tell us something about yourself.</b></p>
+            <input type="text" class="form-control" id="message_box" placeholder="Message" name='message'>
+            </div>
+            <button type="submit" class="btn btn-outline btn-color ">submit</button>
+        </form>
+    </div>
+{% endif %}
+{% endblock %}
